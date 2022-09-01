@@ -1,0 +1,40 @@
+<div class="users__header">
+  <div>
+    <span [routerLink]="['/github']" class="link">Search other</span>
+    <span> / </span>
+    <span [routerLink]="['/github', routeVal[0]]" class="link">{{routeVal[0]}}</span>
+    <span> / </span>
+    <span [routerLink]="['/github', routeVal[0],routeVal[1]]">{{routeVal[1]}}</span>
+  </div>
+  <a class="link" [href]="userContrProfile?.html_url">View on GitHub</a>
+</div>
+<div class="users__profile">
+  <div class="users__user-name">
+    <img [src]="userContrProfile?.avatar_url">
+    <div class="name__user">
+      <span>{{userContrProfile?.login}}</span>
+      <div>({{userContrProfile?.name}})</div>
+    </div>
+  </div>
+  <div class="users__user-checker">
+    <div class="user__check-repos">
+      <span>{{userContrProfile?.watchers}}</span>
+      <span>watchers</span>
+    </div>
+    <div class="user__check-followers">
+      <span>{{userContrProfile?.forks}}</span>
+      <span>forks</span>
+    </div>
+  </div>
+</div >
+
+<div class="contributes">
+  <h1>Contributes: {{userContributes?.length}}</h1>
+  <a *ngFor="let user of userContributes"
+     [routerLink]="['/github', user?.login]"
+     (click)="findUser(user?.login)" class="contributes__user">
+    <div class="contributes__contribute">{{user?.contributions}}</div>
+    <img [src]="user?.avatar_url">
+    <div class="contributes__login">{{user?.login}}</div>
+  </a>
+</div>

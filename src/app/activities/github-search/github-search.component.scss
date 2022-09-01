@@ -1,0 +1,56 @@
+:host{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+input{
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+.main__content {
+  background-color: #EEEEEE;
+  padding: 40px 30px 20px;
+  margin: 40px 0 0;
+  width: 85%;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.main__header {
+  font-size: 30px;
+  margin: 0 0 10px;
+}
+
+.main__input-area {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  input {
+    background-color: #fff;
+    flex: 1 1 auto;
+    border: 1px solid #CACACA;
+    font-size: 14px;
+    padding: 5px;
+    height: 35px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  button {
+    background-color: #fff;
+    flex: 0 0 max-content;
+    height: 35px;
+    border-radius: 0 5px 5px 0;
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid #CACACA;
+  }
+}
+
+.main__comment {
+  font-size: 12px;
+  margin: 5px 0 0;
+}

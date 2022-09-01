@@ -1,0 +1,73 @@
+<main class="main">
+  <div [class.hidden__page]="searchPage"
+       class="main__users">
+    <div class="users__header">
+      <div>
+        <span [routerLink]="['/github']" class="link">Search other</span>
+        <span> / </span>
+        <span>{{this.routerUrl}}</span>
+      </div>
+      <a class="link" [href]="userProfileInfo?.html_url">View on GitHub</a>
+    </div>
+
+
+    <div class="users__profile">
+      <div class="users__user-name">
+        <img [src]="userProfileInfo?.avatar_url">
+        <div class="name__user">
+          <span>{{userProfileInfo?.login}}</span>
+          <div>({{userProfileInfo?.name}})</div>
+        </div>
+      </div>
+      <div class="users__user-checker">
+        <div class="user__check-repos">
+          <span>{{userProfileInfo?.public_repos}}</span>
+          <span>Public Repos</span>
+        </div>
+        <div class="user__check-followers">
+          <span>{{userProfileInfo?.followers}}</span>
+          <span>Followers</span>
+        </div>
+      </div>
+    </div>
+    <div class="users__contents">
+      <div class="contents__header">
+        <div class="content__repos-public"
+             (click)="openAnotherParams(true)"
+             [class.active__repos]="isShowRepos">Public Repositories ({{userProfileInfo?.public_repos}})
+        </div>
+        <div class="content__gists-public"
+             (click)="openAnotherParams(false)"
+             [class.active__repos]="!isShowRepos">Public Gists ({{userProfileInfo?.public_gists}})
+        </div>
+      </div>
+    </div>
+
+    <div [class.hidden__page]="!isShowRepos" class="content__repositories">
+      <div *ngFor="let repos of userReposInfo"
+           class="content__repository">
+        <div class="content__files">
+          <span
+            [routerLink]="[repos?.name]">{{repos?.name}}</span>
+          <span [innerHTML]="repos?.description"></span>
+        </div>
+        <div class="content__type">
+          <span>{{repos.language}}</span>
+          <span>Watchers <i>{{repos?.watchers}}</i></span>
+          <span>Forks <i>{{repos?.forks}}</i></span>
+        </div>
+      </div>
+    </div>
+    <div [class.hidden__page]="isShowRepos" class="content__repositories">
+      <div *ngFor="let gist of userGistInfo" class="content__repository">
+        <div class="content__files">
+          <a [href]="gist?.html_url">{{gist?.filename}}</a>
+          <span [innerHTML]="gist.description"></span>
+        </div>
+        <div class="content__type">
+          <span>{{gist?.language}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
