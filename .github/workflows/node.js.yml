@@ -33,5 +33,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         # branch: gh-pages # by default
-        ssh-key: ${{ secrets.repo }}
+        ssh-key: ${{ secrets.DEPLOY_KEY_SECRET  }}
         folder: dist/github-api
