@@ -2,9 +2,26 @@ $breakpoint:767px;
 
 :host{
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-column{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.flex-jc-sb{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-column-jc-sb{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .link{
   color: blue;
@@ -27,20 +44,16 @@ input{
 }
 
 main.main {
-  display: flex;
   width: 100%;
+  height: 100%;
+  overflow: visible;
   flex: 1 1 auto;
-  align-items: center;
-  justify-content: flex-start;
   flex-direction: column;
   margin: 0 auto;
 }
 
 .main__users {
   width: 80%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   position: relative;
   padding: 10px 0 0;
   margin: 0 0 20px;
@@ -49,15 +62,12 @@ main.main {
 .users__header {
   width: 100%;
   background-color: #F5F5F5;
-  display: flex;
-  align-items: center;
   padding: 0 20px;
   font-size: 12px;
   word-spacing: 2px;
   letter-spacing: 1.2px;
   box-sizing: border-box;
   text-decoration: none;
-  justify-content: space-between;
   height: 36px;
   border-radius: 3px;
 
@@ -74,11 +84,8 @@ main.main {
 }
 
 .users__profile {
-  display: flex;
   width: 100%;
-  justify-content: space-between;
   flex-wrap: wrap;
-  align-items: center;
   padding: 40px 20px 40px;
   height: max-content;
   margin: 0 0 20px;
@@ -93,9 +100,6 @@ main.main {
 }
 
 .users__user-name {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: fit-content;
   padding: 0 -10px;
   margin: 0 0 20px;
@@ -123,9 +127,6 @@ main.main {
 
 .users__user-checker {
   background-color: #F5F5F5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
   width: fit-content;
   padding: 20px 10px;
@@ -193,9 +194,6 @@ main.main {
 
 .content__repository {
   background-color: #F7F7F7;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 15px 20px;
   height: 50px;
   margin: 3px 0 0;
@@ -203,9 +201,6 @@ main.main {
 }
 
 .content__files {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   flex: 1 0 30%;
   height: 100%;
   overflow: hidden;
@@ -259,6 +254,16 @@ main.main {
       font-weight: bold;
     }
   }
+}
+.loader__page{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.loader{
+  width: 20%;
 }
 
 @media (max-width: $breakpoint) {

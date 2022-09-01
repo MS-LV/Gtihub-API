@@ -12,8 +12,9 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class GithubProfileComponent implements OnInit {
   menuPage = true;
-  searchPage = true;
+  searchPage = false;
   isShowRepos = true;
+  isLoadedPage = false;
   sourceUrl = 'https://api.github.com/repos/';
   routerUrl!:string;
   isContributes = true;
@@ -43,13 +44,14 @@ export class GithubProfileComponent implements OnInit {
     if (!value || val.length === 0) return;
     this.service.combined(value)
       .pipe(
-        filter(value => value !== '')
+        filter(value => value !== ''),
       )
       .subscribe((next) => {
         this.userProfileInfo = next[0];
         this.userReposInfo = next[1];
         this.userGistInfo = next[2];
-        this.toggleFrontPage(false);
+        this.isLoadedPage = true;
+        // this.toggleFrontPage(false);
       })
     //______________________________________________________________________
   }

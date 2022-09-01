@@ -18,3 +18,10 @@ html, body{
 *{
   font-family: Helvetica, serif;
 }
+.link{
+  color: blue;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+}

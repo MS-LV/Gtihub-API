@@ -25,6 +25,7 @@ export class GithubContributesComponent implements OnInit {
   userContrProfile!: TypeContrProfile;
   routeVal!:string[];
   sourceUrl = 'https://api.github.com/repos/';
+  isPageLoaded = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,7 +44,8 @@ export class GithubContributesComponent implements OnInit {
         });
       this.service.getRepoInfo(val[0], val[1])
         .subscribe((next) => {
-          this.userContrProfile = next
+          this.userContrProfile = next;
+          this.isPageLoaded = true;
         })
     })
   }
@@ -61,31 +63,30 @@ export class GithubContributesComponent implements OnInit {
         this.userGistInfo = next[2];
       })
   }
-
-  contributors(name: string | undefined, watchers: number | undefined, forks: number | undefined) {
-    // this.userContrProfile = {watchers, forks};
-    const getContributions = ajax.getJSON<object[]>(this.sourceUrl + name + '/contributors?per_page=100')
-    getContributions
-      .pipe(
-        map((value: any[]) => {
-            let contributes: TypeUserContributes[] = [];
-            Array.from(value).forEach((item) => {
-              const {login, avatar_url, contributions} = item
-              contributes.push({
-                login,
-                avatar_url,
-                contributions
-              })
-            })
-            return contributes;
-          }
-        ),
-        catchError(err => {
-          return of([])
-        })
-      )
-      .subscribe((next: TypeUserContributes[]) => {
-        this.userContributes = next;
-      })
-  }
+  // contributors(name: string | undefined, watchers: number | undefined, forks: number | undefined) {
+  //   // this.userContrProfile = {watchers, forks};
+  //   const getContributions = ajax.getJSON<object[]>(this.sourceUrl + name + '/contributors?per_page=100')
+  //   getContributions
+  //     .pipe(
+  //       map((value: any[]) => {
+  //           let contributes: TypeUserContributes[] = [];
+  //           Array.from(value).forEach((item) => {
+  //             const {login, avatar_url, contributions} = item
+  //             contributes.push({
+  //               login,
+  //               avatar_url,
+  //               contributions
+  //             })
+  //           })
+  //           return contributes;
+  //         }
+  //       ),
+  //       catchError(err => {
+  //         return of([])
+  //       })
+  //     )
+  //     .subscribe((next: TypeUserContributes[]) => {
+  //       this.userContributes = next;
+  //     })
+  // }
 }

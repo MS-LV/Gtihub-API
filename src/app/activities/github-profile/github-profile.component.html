@@ -1,7 +1,6 @@
-<main class="main">
-  <div [class.hidden__page]="searchPage"
-       class="main__users">
-    <div class="users__header">
+<main *ngIf="isLoadedPage" class="main flex-column">
+  <div class="main__users flex-column">
+    <div class="users__header flex-jc-sb">
       <div>
         <span [routerLink]="['/github']" class="link">Search other</span>
         <span> / </span>
@@ -11,15 +10,15 @@
     </div>
 
 
-    <div class="users__profile">
-      <div class="users__user-name">
+    <div class="users__profile flex-jc-sb">
+      <div class="users__user-name flex-jc-sb">
         <img [src]="userProfileInfo?.avatar_url">
         <div class="name__user">
           <span>{{userProfileInfo?.login}}</span>
           <div>({{userProfileInfo?.name}})</div>
         </div>
       </div>
-      <div class="users__user-checker">
+      <div class="users__user-checker flex-jc-sb">
         <div class="user__check-repos">
           <span>{{userProfileInfo?.public_repos}}</span>
           <span>Public Repos</span>
@@ -45,8 +44,8 @@
 
     <div [class.hidden__page]="!isShowRepos" class="content__repositories">
       <div *ngFor="let repos of userReposInfo"
-           class="content__repository">
-        <div class="content__files">
+           class="content__repository flex-jc-sb">
+        <div class="content__files flex-column-jc-sb">
           <span
             [routerLink]="[repos?.name]">{{repos?.name}}</span>
           <span [innerHTML]="repos?.description"></span>
@@ -71,3 +70,7 @@
     </div>
   </div>
 </main>
+
+<div *ngIf="!isLoadedPage" class="loader__page" >
+  <img class="loader" src="assets/icons/Spinner-1s-200px%20(1).svg">
+</div>
