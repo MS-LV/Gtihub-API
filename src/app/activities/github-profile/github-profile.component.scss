@@ -181,11 +181,7 @@ main.main {
   font-size: 14px;
 }
 
-.content__repos-public {
-  margin: 0 10px 0 0;
-}
-
-.content__gists-public {
+.content__repos-public,.content__gists-public {
   margin: 0 10px 0 0;
 }
 
@@ -265,29 +261,6 @@ main.main {
 }
 
 @media (max-width: $breakpoint) {
-  header.header {
-    justify-content: space-between;
-
-    .header__burger {
-      display: block;
-    }
-
-    .header__menu {
-      display: none;
-      overflow: hidden;
-      padding: 10px 0 0;
-
-      &.isOpen {
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: fit-content;
-        top: 50px;
-        background-color: #F3F5F5;
-        border: 2px solid #F3F5F5;
-      }
-    }
-  }
   .content__type{
     span{
       font-size: 10px;
