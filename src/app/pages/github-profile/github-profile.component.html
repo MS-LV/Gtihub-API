@@ -1,4 +1,4 @@
-<main *ngIf="isLoadedPage" class="main flex-column">
+<main *ngIf="isPageLoaded" class="main flex-column">
   <div class="main__users flex-column">
     <div class="users__header flex-jc-sb">
       <div>
@@ -12,7 +12,7 @@
 
     <div class="users__profile flex-jc-sb">
       <div class="users__user-name flex-jc-sb">
-        <img [src]="userProfileInfo?.avatar_url">
+        <img [src]="userProfileInfo?.avatar_url" alt="">
         <div class="name__user">
           <span>{{userProfileInfo?.login}}</span>
           <div>({{userProfileInfo?.name}})</div>
@@ -58,10 +58,10 @@
       </div>
     </div>
     <div [class.hidden__page]="isShowRepos" class="content__repositories">
-      <div *ngFor="let gist of userGistInfo" class="content__repository">
+      <div *ngFor="let gist of userGistInfo" class="content__repository flex-jc-sb">
         <div class="content__files">
           <a [href]="gist?.html_url">{{gist?.filename}}</a>
-          <span [innerHTML]="gist.description"></span>
+          <span class="description" [innerHTML]="gist.description"></span>
         </div>
         <div class="content__type">
           <span>{{gist?.language}}</span>
@@ -71,6 +71,6 @@
   </div>
 </main>
 
-<div *ngIf="!isLoadedPage" class="loader__page" >
-  <img class="loader" src="assets/icons/Spinner-1s-200px%20(1).svg">
+<div *ngIf="!isPageLoaded" class="loader__page" >
+  <img class="loader" src="assets/icons/Spinner-1s-200px%20(1).svg" alt="">
 </div>

@@ -36,8 +36,6 @@ export class GithubContributesComponent implements OnInit {
     this.route.params.subscribe((next: Params) => {
       const val = Object.values(next);
       this.routeVal = val;
-      console.log(this.routeVal)
-      // this.routeVal = next;
       this.service.getContributions(val[0], val[1])
         .subscribe((next: TypeUserContributes[]) => {
           this.userContributes = next;
@@ -49,44 +47,4 @@ export class GithubContributesComponent implements OnInit {
         })
     })
   }
-
-  findUser(value: string | undefined) {
-    const val: string = '' + value
-    if (!value || val.length === 0) return;
-    this.service.combined(value)
-      .pipe(
-        filter(value => value !== '')
-      )
-      .subscribe((next) => {
-        this.userProfileInfo = next[0];
-        this.userReposInfo = next[1];
-        this.userGistInfo = next[2];
-      })
-  }
-  // contributors(name: string | undefined, watchers: number | undefined, forks: number | undefined) {
-  //   // this.userContrProfile = {watchers, forks};
-  //   const getContributions = ajax.getJSON<object[]>(this.sourceUrl + name + '/contributors?per_page=100')
-  //   getContributions
-  //     .pipe(
-  //       map((value: any[]) => {
-  //           let contributes: TypeUserContributes[] = [];
-  //           Array.from(value).forEach((item) => {
-  //             const {login, avatar_url, contributions} = item
-  //             contributes.push({
-  //               login,
-  //               avatar_url,
-  //               contributions
-  //             })
-  //           })
-  //           return contributes;
-  //         }
-  //       ),
-  //       catchError(err => {
-  //         return of([])
-  //       })
-  //     )
-  //     .subscribe((next: TypeUserContributes[]) => {
-  //       this.userContributes = next;
-  //     })
-  // }
 }

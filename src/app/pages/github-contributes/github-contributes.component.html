@@ -34,8 +34,7 @@
   <div class="contributes">
     <h1>Contributes: {{userContributes?.length}}</h1>
     <a *ngFor="let user of userContributes"
-       [routerLink]="['/github', user?.login]"
-       (click)="findUser(user?.login)" class="contributes__user">
+       [routerLink]="['/github', user?.login]" class="contributes__user">
       <div class="contributes__contribute">{{user?.contributions}}</div>
       <img [src]="user?.avatar_url">
       <div class="contributes__login">{{user?.login}}</div>

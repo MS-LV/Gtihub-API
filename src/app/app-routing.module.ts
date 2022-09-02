@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {GithubSearchComponent} from "./activities/github-search/github-search.component";
+import {GithubSearchComponent} from "./pages/github-search/github-search.component";
 
 const routes: Routes = [
   {
@@ -9,15 +9,15 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./activities/github-about/github-about.module').then(m => m.GithubAboutModule)
+    loadChildren: () => import('./pages/github-about/github-about.module').then(m => m.GithubAboutModule)
   },
   {
     path: 'github/:user',
-    loadChildren: () => import('./activities/github-profile/github-profile.module').then(m => m.GithubProfileModule)
+    loadChildren: () => import('./pages/github-profile/github-profile.module').then(m => m.GithubProfileModule)
   },
   {
     path:'github/:user/:repos',
-    loadChildren:() => import('./activities/github-contributes/github-contributes.module').then(m =>m.GithubContributesModule)
+    loadChildren:() => import('./pages/github-contributes/github-contributes.module').then(m =>m.GithubContributesModule)
   },
   {
     path:'**',
@@ -26,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

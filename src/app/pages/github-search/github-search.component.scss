@@ -1,14 +1,16 @@
-:host{
+:host {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
 }
-input{
+
+input {
   box-sizing: border-box;
   outline: none;
   border: none;
 }
+
 .main__content {
   background-color: #EEEEEE;
   padding: 40px 30px 20px;

@@ -5,19 +5,18 @@
       AngularJS - GitHub Info
     </div>
     <div class="header__burger" (click)="toggleMenu()">
-      <img *ngIf="!isMenuOpen;" src="assets/icons/burger_menu.svg">
+      <img *ngIf="!isMenuOpen;" src="assets/icons/burger_menu.svg" alt="">
       <span *ngIf="isMenuOpen">&times;</span>
     </div>
     <div class="header__menu"
          [class.isOpen]="isMenuOpen">
-      <div (click)="menuOption()"
+      <div
            [routerLink]="['/github']"
            [routerLinkActive]="'active__page'">Search
       </div>
       <div
         [routerLink]="['/about']"
-        [routerLinkActive]="'active__page'"
-        (click)="menuOption()">About
+        [routerLinkActive]="'active__page'">About
       </div>
     </div>
   </header>

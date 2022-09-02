@@ -33,7 +33,7 @@ export class GithubSearchComponent implements OnInit, AfterViewInit {
       })
   }
 
-  goProfile() {
+  goToProfile() {
     if (this.userName == '') return;
     this.router.navigate(['/github', this.userName]).then()
   }
@@ -41,7 +41,7 @@ export class GithubSearchComponent implements OnInit, AfterViewInit {
   @HostListener('document:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
     if (event.code === 'Enter') {
-      this.goProfile();
+      this.goToProfile();
     }
   }
 }
